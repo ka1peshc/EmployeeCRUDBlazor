@@ -1,4 +1,6 @@
+using DataAccessLayer;
 using EmployeeBlazorApp.Data;
+using EmployeeServices;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
@@ -15,9 +17,11 @@ namespace EmployeeBlazorApp
 {
     public class Startup
     {
+        public string connectionString { get; private set; }
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            connectionString = Configuration["ConnectionStrings:EmployeeDB"];
         }
 
         public IConfiguration Configuration { get; }
@@ -29,6 +33,8 @@ namespace EmployeeBlazorApp
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
+            services.AddSingleton<IEmpServices, EmpServices>();
+            services.AddSingleton<IEmployeeDAL, EmployeeDAL>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

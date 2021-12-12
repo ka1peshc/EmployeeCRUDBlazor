@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeBlazorApp", "EmployeeBlazorApp.csproj", "{4B1A2017-A8A9-45D2-98FE-138C9DABF284}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeBlazorApp", "EmployeeBlazorApp.csproj", "{4B1A2017-A8A9-45D2-98FE-138C9DABF284}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeModel", "..\EmployeeModel\EmployeeModel.csproj", "{BAAC52E4-81E6-4CEC-86E3-7B1C08C7CF58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeModel", "..\EmployeeModel\EmployeeModel.csproj", "{BAAC52E4-81E6-4CEC-86E3-7B1C08C7CF58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeServices", "..\EmployeeServices\EmployeeServices.csproj", "{F897AC25-9D2A-413B-9288-916769519CEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeServices", "..\EmployeeServices\EmployeeServices.csproj", "{F897AC25-9D2A-413B-9288-916769519CEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "..\DataAccessLayer\DataAccessLayer.csproj", "{3672A634-B1DC-406D-98EF-8131E15A20E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer", "..\DataAccessLayer\DataAccessLayer.csproj", "{3672A634-B1DC-406D-98EF-8131E15A20E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
