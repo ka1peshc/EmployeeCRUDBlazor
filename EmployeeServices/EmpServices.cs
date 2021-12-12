@@ -20,5 +20,10 @@
             this.employeeDataAccess.AddNewEmp(objEmp);
             return "Added Successfully";
         }
+        public List<Employee> GetEmployee()
+        {
+            List<Employee> emp = this.employeeDataAccess.GetAllEmployee().ToList();
+            return emp;
+        }
     }
 }

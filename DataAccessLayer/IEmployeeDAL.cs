@@ -7,5 +7,6 @@ namespace DataAccessLayer
         string connectionString { get; set; }
 
         void AddNewEmp(Employee Emp);
+        IEnumerable<Employee> GetAllEmployee();
     }
 }

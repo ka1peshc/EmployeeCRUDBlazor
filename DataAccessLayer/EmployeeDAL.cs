@@ -43,5 +43,36 @@ namespace DataAccessLayer
             }
         }
 
+        /// <summary>
+        /// Display all employees
+        /// </summary>
+        /// <returns>Employee model</returns>
+        public IEnumerable<Employee> GetAllEmployee()
+        {
+            string ConnectionStrings = config.GetConnectionString(connectionString);
+            List<Employee> lstCustomer = new List<Employee>();
+            using (MySqlConnection con = new MySqlConnection(ConnectionStrings))
+            {
+                MySqlCommand cmd = new MySqlCommand("sp_DisplayEmployee", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                con.Open();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    Employee employee = new Employee();
+                    employee.EmployeeId = Convert.ToInt32(rdr["Empid"]);
+                    employee.Name = rdr["Name"].ToString();
+                    employee.ProfileImage = rdr["ProfileImage"].ToString();
+                    employee.Gender = rdr["Gender"].ToString();
+                    employee.Department = rdr["Department"].ToString();
+                    employee.Salary = Convert.ToInt32(rdr["Salary"]);
+                    employee.StartDate = (DateTime)(rdr["StartDate"] == DBNull.Value ? default(DateTime) : rdr["StartDate"]);
+                    employee.Notes = rdr["Note"].ToString();
+                    lstCustomer.Add(employee);
+                }
+                con.Close();
+            }
+            return lstCustomer;
+        }
     }
 }
