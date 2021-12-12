@@ -124,5 +124,27 @@ namespace DataAccessLayer
                 con.Close();
             }
         }
+
+        /// <summary>
+        /// Update employee
+        /// </summary>
+        /// <param name="Emp">employee model</param>
+        public void UpdateEmployee(Employee Emp)
+        {
+            string ConnectionStrings = config.GetConnectionString(connectionString);
+            using (MySqlConnection con = new MySqlConnection(ConnectionStrings))
+            {
+                MySqlCommand cmd = new MySqlCommand("sp_UpdateEmpData", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@eid", Emp.EmployeeId);
+                cmd.Parameters.AddWithValue("@ename", Emp.Name);
+                cmd.Parameters.AddWithValue("@esalary", Emp.Salary);
+                cmd.Parameters.AddWithValue("@estartdate", Emp.StartDate);
+                cmd.Parameters.AddWithValue("@enotes", Emp.Notes);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+        }
     }
 }
