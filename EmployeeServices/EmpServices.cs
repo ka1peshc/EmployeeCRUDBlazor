@@ -25,5 +25,16 @@
             List<Employee> emp = this.employeeDataAccess.GetAllEmployee().ToList();
             return emp;
         }
+        public Employee GetEmployeeByID(int id)
+        {
+            Employee customer = this.employeeDataAccess.GetEmployeeByID(id);
+            return customer;
+        }
+
+        public string DeleteEmployee(Employee objEmp)
+        {
+            this.employeeDataAccess.DeleteEmployee(objEmp.EmployeeId);
+            return "Delete successful";
+        }
     }
 }

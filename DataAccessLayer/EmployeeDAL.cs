@@ -74,5 +74,55 @@ namespace DataAccessLayer
             }
             return lstCustomer;
         }
+        
+        /// <summary>
+        /// Get employee by id
+        /// </summary>
+        /// <param name="id">int id</param>
+        /// <returns>employee model</returns>
+        public Employee GetEmployeeByID(int? id)
+        {
+            string ConnectionStrings = config.GetConnectionString(connectionString);
+            Employee employee = new Employee();
+            using (MySqlConnection con = new MySqlConnection(ConnectionStrings))
+            {
+                MySqlCommand cmd = new MySqlCommand("sp_GetEmployeeById", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@employeeId", id);
+                con.Open();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    employee.EmployeeId = Convert.ToInt32(rdr["Empid"]);
+                    employee.Name = rdr["Name"].ToString();
+                    employee.ProfileImage = rdr["ProfileImage"].ToString();
+                    employee.Gender = rdr["Gender"].ToString();
+                    employee.Department = rdr["Department"].ToString();
+                    employee.Salary = Convert.ToInt32(rdr["Salary"]);
+                    employee.StartDate = (DateTime)(rdr["StartDate"] == DBNull.Value ? default(DateTime) : rdr["StartDate"]);
+                    employee.Notes = rdr["Note"].ToString();
+                }
+                con.Close();
+            }
+            return employee;
+        }
+
+        /// <summary>
+        /// Delete Employee
+        /// </summary>
+        /// <param name="id">int id</param>
+        public void DeleteEmployee(int? id)
+        {
+            string ConnectionStrings = config.GetConnectionString(connectionString);
+            using (MySqlConnection con = new MySqlConnection(ConnectionStrings))
+            {
+                MySqlCommand cmd = new MySqlCommand("sp_DeleteEmployee", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@employeeId", id);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+        }
     }
 }

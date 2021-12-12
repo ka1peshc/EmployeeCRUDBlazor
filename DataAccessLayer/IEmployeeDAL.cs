@@ -1,4 +1,5 @@
 ﻿using EmployeeModel;
+using System.Collections.Generic;
 
 namespace DataAccessLayer
 {
@@ -8,5 +9,7 @@ namespace DataAccessLayer
 
         void AddNewEmp(Employee Emp);
         IEnumerable<Employee> GetAllEmployee();
+        Employee GetEmployeeByID(int? id);
+        void DeleteEmployee(int? id);
     }
 }

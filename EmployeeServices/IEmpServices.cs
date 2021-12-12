@@ -7,5 +7,7 @@ namespace EmployeeServices
     {
         string AddNewEmp(Employee objEmp);
         List<Employee> GetEmployee();
+        Employee GetEmployeeByID(int id);
+        string DeleteEmployee(Employee objEmp);
     }
 }
