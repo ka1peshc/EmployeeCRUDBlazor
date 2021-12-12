@@ -11,5 +11,6 @@ namespace DataAccessLayer
         IEnumerable<Employee> GetAllEmployee();
         Employee GetEmployeeByID(int? id);
         void DeleteEmployee(int? id);
+        void UpdateEmployee(Employee Emp);
     }
 }

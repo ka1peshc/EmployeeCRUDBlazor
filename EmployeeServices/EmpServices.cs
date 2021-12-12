@@ -36,5 +36,10 @@
             this.employeeDataAccess.DeleteEmployee(objEmp.EmployeeId);
             return "Delete successful";
         }
+        public string UpdateEmployee(Employee objEmp)
+        {
+            this.employeeDataAccess.UpdateEmployee(objEmp);
+            return "Update Successful";
+        }
     }
 }

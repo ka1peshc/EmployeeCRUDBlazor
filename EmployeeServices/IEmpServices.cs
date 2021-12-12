@@ -9,5 +9,6 @@ namespace EmployeeServices
         List<Employee> GetEmployee();
         Employee GetEmployeeByID(int id);
         string DeleteEmployee(Employee objEmp);
+        string UpdateEmployee(Employee objEmp);
     }
 }
